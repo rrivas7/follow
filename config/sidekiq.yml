@@ -1,0 +1,3 @@
+:schedule:
+  Followees::SyncArticlesJob:
+    every: '1m'

@@ -1,0 +1,24 @@
+<div class="page-header">
+  <%= @article.title %>
+</div>
+<p class="text-center">
+  <%= image_tag @article.image_url, class: 'img-fluid' %>
+</p>
+<% if @article.author %>
+  <p>
+    By <%= @article.author %>
+  </p>
+<% end %>
+<% if @article.source %>
+  <p class="italicized">
+    <%= @article.source %>
+  </p>
+<% end %>
+<% if @article.published_at %>
+  <p>
+    <%= @article.published_at %>
+  </p>
+<% end %>
+<p>
+  <%= @article.content || @article.description %>
+</p>

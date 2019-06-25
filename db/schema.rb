@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_042237) do
+ActiveRecord::Schema.define(version: 2019_06_25_051458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "author"
+    t.string "source"
+    t.string "title"
+    t.text "description"
+    t.text "content"
+    t.string "url"
+    t.string "image_url"
+    t.datetime "published_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "articles_followees", force: :cascade do |t|
+    t.bigint "article_id"
+    t.bigint "followee_id"
+    t.index ["article_id"], name: "index_articles_followees_on_article_id"
+    t.index ["followee_id"], name: "index_articles_followees_on_followee_id"
+  end
+
+  create_table "followees", force: :cascade do |t|
+    t.string "name"
+    t.string "article_query"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +50,13 @@ ActiveRecord::Schema.define(version: 2019_06_24_042237) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "followee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["followee_id"], name: "index_users_on_followee_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles_followees", "articles"
+  add_foreign_key "articles_followees", "followees"
+  add_foreign_key "users", "followees"
 end

@@ -1,0 +1,7 @@
+<div class="page-header">
+  News Feed for <%= @followee.name %>
+</div>
+
+<% @articles.each do |article| %>
+  <%= render article %>
+<% end %>
