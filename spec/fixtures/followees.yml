@@ -1,0 +1,8 @@
+harry:
+  name: Harry Potter
+  article_query: harry potter
+  articles: [one, two]
+ron:
+  name: Ron Weasley
+  article_query: ron weasley
+  articles: [two, three]

@@ -1,9 +1,11 @@
 <div class="page-header">
   <%= @article.title %>
 </div>
-<p class="text-center">
-  <%= image_tag @article.image_url, class: 'img-fluid' %>
-</p>
+<% if @article.image_url %>
+  <p class="text-center">
+    <%= image_tag @article.image_url, class: 'img-fluid' %>
+  </p>
+<% end %>
 <% if @article.author %>
   <p>
     By <%= @article.author %>

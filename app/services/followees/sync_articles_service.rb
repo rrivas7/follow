@@ -19,7 +19,8 @@ module Followees
         language: :en,
         q: @followee.article_query
       }.compact
-      ::NewsApiService.new().get_everything(params: params).parsed_response['articles']
+      response = ::NewsApiService.new().get_everything(params: params).parsed_response
+      response['articles']
     end
 
     protected

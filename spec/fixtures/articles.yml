@@ -1,0 +1,21 @@
+one:
+  source: 'bbc news'
+  author: 'Jim Bob'
+  description: 'Foo maths'
+  title: 'Foo'
+  content: 'Foo + bar = foobar'
+  published_at: <%= 5.minutes.ago.to_s(:db) %>
+two:
+  source: 'bbc news'
+  author: 'Jim Bob'
+  description: 'Cat facts'
+  title: 'Cat Fact 3'
+  content: 'Cats will make their presence known'
+  published_at: <%= 3.minutes.ago.to_s(:db) %>
+three:
+  source: 'daily prophet'
+  author: 'rita skeeter'
+  description: 'Harry is revealed as a phony'
+  title: 'Harry is a phony'
+  content: 'Harry is actually 12.'
+  published_at: <%= 1.minute.ago.to_s(:db) %>
